@@ -5,7 +5,7 @@ import './selected-book.css';
 
 const SelectedBook = ({ book }) => {
 
-    const [completedTyping, setCompletedTyping] = useState(true);
+    const [, setCompletedTyping] = useState(true);
     const [displayResponse, setDisplayResponse] = useState('');
 
     useEffect(() => {
