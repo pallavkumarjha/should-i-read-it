@@ -9,10 +9,13 @@ const SelectedBook = ({ book }) => {
     const [displayResponse, setDisplayResponse] = useState('');
 
     useEffect(() => {
+        if(isEmpty(book)) {
+            return null;
+        }
         setCompletedTyping(false);
       
         let i = 0;
-        const stringResponse = book.volumeInfo.description
+        const stringResponse = book?.volumeInfo.description
       
         const intervalId = setInterval(() => {
           setDisplayResponse(stringResponse.slice(0, i));
