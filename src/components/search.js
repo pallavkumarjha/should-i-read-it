@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback } from 'react';
 import { AutoComplete } from 'antd';
 import axios from 'axios';
 
@@ -30,31 +30,21 @@ const SearchContainer = ({setSelectedBook}) => {
         setOptions(mutatedOptions);
     }
 
-const mutateOptionsDebounced = useMemo(
-  () => debounce((searchTerm) => {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${convertSearchString(searchTerm)}&maxResults=5`)
-      .then(response => {
-        mutateOptions(response.data.items);
-        setOriginalOptions(response.data.items);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, 300),
-  [mutateOptions, setOriginalOptions, convertSearchString] // Dependencies for debounced function creation
-);
-
-const debouncedGetResult = useCallback(
-  (searchTerm) => {
-    if (searchTerm.trim() === '') {
-      setOptions([]);
-      return;
-    }
-    mutateOptionsDebounced(searchTerm);
-  },
-  [mutateOptionsDebounced, setOptions] // useCallback now only depends on the debounce function created above
-);
-
+    const debouncedGetResult = debounce((searchTerm) => {
+        if (searchTerm.trim() === '') {
+            setOptions([]);
+            return;
+        }
+    
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${convertSearchString(searchTerm)}&maxResults=5`)
+            .then(response => {
+                mutateOptions(response.data.items);
+                setOriginalOptions(response.data.items);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, 300);
 
     const onValueSelect = (value) => {
         const selectedOpt = originalOptions.find(option => `${option.volumeInfo.authors[0]} | ${option.volumeInfo.title}` === value);
