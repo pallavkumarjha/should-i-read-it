@@ -26,7 +26,7 @@ const SelectedBook = ({ book }) => {
         }, 20);
       
         return () => clearInterval(intervalId);
-      }, [book.volumeInfo.description]);
+      }, [book?.volumeInfo?.description]);
 
     if(isEmpty(book)) {
         return null;
