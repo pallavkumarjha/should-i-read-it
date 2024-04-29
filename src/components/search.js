@@ -32,7 +32,7 @@ const SearchContainer = ({setSelectedBook}) => {
                 console.error(error);
               });
           }, 300),
-        []
+        [mutateOptions, setOptions, setOriginalOptions, convertSearchString]
     );
 
 
