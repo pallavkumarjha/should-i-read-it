@@ -19,6 +19,17 @@ const SearchContainer = ({setSelectedBook}) => {
         debouncedGetResult(e);
     };
 
+    const mutateOptions = (data) => {
+        const mutatedOptions = data?.map(item => {
+            return {
+                value: `${item.volumeInfo.authors[0]} | ${item.volumeInfo.title}`,
+                key: item.id,
+                label: `${item.volumeInfo.authors[0]} | ${item.volumeInfo.title}`,
+            }
+        });
+        setOptions(mutatedOptions);
+    }
+
     const debouncedGetResult = useCallback(
         debounce((searchTerm) => {
             if (searchTerm.trim() === '') return;
@@ -34,18 +45,6 @@ const SearchContainer = ({setSelectedBook}) => {
           }, 300),
         [mutateOptions, setOptions, setOriginalOptions, convertSearchString]
     );
-
-
-    const mutateOptions = (data) => {
-        const mutatedOptions = data?.map(item => {
-            return {
-                value: `${item.volumeInfo.authors[0]} | ${item.volumeInfo.title}`,
-                key: item.id,
-                label: `${item.volumeInfo.authors[0]} | ${item.volumeInfo.title}`,
-            }
-        });
-        setOptions(mutatedOptions);
-    }
 
     const onValueSelect = (value) => {
         const selectedOpt = originalOptions.find(option => `${option.volumeInfo.authors[0]} | ${option.volumeInfo.title}` === value);
