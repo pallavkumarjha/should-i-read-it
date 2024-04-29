@@ -9,7 +9,7 @@ const SelectedBook = ({ book }) => {
     const [displayResponse, setDisplayResponse] = useState('');
 
     useEffect(() => {
-        if(isEmpty(book)) {
+        if(isEmpty(book?.volumeInfo?.description)) {
             return null;
         }
         setCompletedTyping(false);
