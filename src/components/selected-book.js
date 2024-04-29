@@ -16,7 +16,7 @@ const SelectedBook = ({ book }) => {
                 {/* <p>Genre: {genre}</p> */}
                 <p>Description: {description}</p>
                 <p>Published on: {publishedDate}</p>
-                <img src={imageLinks?.thumbnail || imageLinks?. smallThumbnail} alt={title} />
+                <img src={imageLinks?.thumbnail || imageLinks?.smallThumbnail} alt={title} />
                 {/* Add more book details here */}
             </div>
         );
