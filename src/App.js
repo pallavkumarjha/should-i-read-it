@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import SearchContainer from './components/search';
+import { useState } from 'react';
+import SelectedBook from './components/selected-book';
+import { Typography } from 'antd';
+const { Title } = Typography;
 
 function App() {
+  const [selectedBook, setSelectedBook] = useState({});
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Title level={2}> Should I read it?</Title>
       </header>
+      <SearchContainer setSelectedBook={setSelectedBook} />
+      <SelectedBook book={selectedBook} />
     </div>
   );
 }
