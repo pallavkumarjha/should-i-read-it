@@ -33,7 +33,7 @@ const SelectedBook = ({ book }) => {
     }
 
     const renderSelectedBook = () => {
-        const { authors, publishedDate, description, imageLinks, title  } = book.volumeInfo;
+        const { authors, publishedDate, imageLinks, title  } = book.volumeInfo;
         return (
             <div className='selectedBook'>
                 <h2>{title}</h2>
