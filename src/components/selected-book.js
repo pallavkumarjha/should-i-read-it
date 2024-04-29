@@ -7,7 +7,6 @@ const SelectedBook = ({ book }) => {
 
     const [, setCompletedTyping] = useState(true);
     const [displayResponse, setDisplayResponse] = useState('');
-    let intervalId = null;
 
     useEffect(() => {
         const { volumeInfo } = book;
@@ -15,7 +14,7 @@ const SelectedBook = ({ book }) => {
             const description = volumeInfo?.description || '';
             let i = 0;
       
-            intervalId = setInterval(() => {
+            let intervalId = setInterval(() => {
               setDisplayResponse(description.slice(0, i));
           
               i++;
@@ -25,9 +24,8 @@ const SelectedBook = ({ book }) => {
                 setCompletedTyping(true);
               }
             }, 20);
-          
+            return () => clearInterval(intervalId);
         }
-        return () => clearInterval(intervalId);
       }, [book]);
 
     if(isEmpty(book)) {
