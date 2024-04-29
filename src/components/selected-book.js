@@ -7,29 +7,28 @@ const SelectedBook = ({ book }) => {
 
     const [, setCompletedTyping] = useState(true);
     const [displayResponse, setDisplayResponse] = useState('');
+    let intervalId = null;
 
     useEffect(() => {
-        if(isEmpty(book?.volumeInfo?.description)) {
-            return null;
+        const { volumeInfo } = book;
+        if(!isEmpty(volumeInfo?.description)) {
+            const description = volumeInfo?.description || '';
+            let i = 0;
+      
+            intervalId = setInterval(() => {
+              setDisplayResponse(description.slice(0, i));
+          
+              i++;
+          
+              if (i > description.length) {
+                clearInterval(intervalId);
+                setCompletedTyping(true);
+              }
+            }, 20);
+          
         }
-        setCompletedTyping(false);
-      
-        let i = 0;
-        const stringResponse = book?.volumeInfo.description
-      
-        const intervalId = setInterval(() => {
-          setDisplayResponse(stringResponse.slice(0, i));
-      
-          i++;
-      
-          if (i > stringResponse.length) {
-            clearInterval(intervalId);
-            setCompletedTyping(true);
-          }
-        }, 20);
-      
         return () => clearInterval(intervalId);
-      }, [book?.volumeInfo?.description]);
+      }, [book]);
 
     if(isEmpty(book)) {
         return null;
