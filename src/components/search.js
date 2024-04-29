@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { AutoComplete } from 'antd';
 import axios from 'axios';
 
@@ -6,10 +6,9 @@ import './search.css';
 import { debounce } from 'lodash';
 
 const SearchContainer = ({setSelectedBook}) => {
-    const [searchTerm, setSearchTerm] = useState('');
     const [options, setOptions] = useState([]);
     const [originalOptions, setOriginalOptions] = useState([]);
-    const [selectedOption, setSelectedOption] = useState({});
+    // const [selectedOption, setSelectedOption] = useState({});
 
     const convertSearchString = (searchString) => {
         const encodedSeachString = encodeURI(searchString);
@@ -17,7 +16,6 @@ const SearchContainer = ({setSelectedBook}) => {
     }
 
     const handleSearch = (e) => {
-        setSearchTerm(e);
         debouncedGetResult(e);
     };
 
