@@ -1,0 +1,23 @@
+.autocomplete-element {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    border-radius: 8px;
+    outline: none !important;
+}
+
+.ant-select-selector {
+    background-color: transparent !important;
+}
+
+.autocomplete-popup {
+    background-color: #E6E5D9;
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select-selector:hover,
+.ant-select-open .ant-select-selector {
+  border-color: #d9d9d9 !important;
+  box-shadow: none !important;
+}

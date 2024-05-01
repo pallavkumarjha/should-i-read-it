@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { AutoComplete } from 'antd';
 import axios from 'axios';
 
+import { SearchOutlined } from '@ant-design/icons';
+
 import './search.css';
 import { debounce } from 'lodash';
 
@@ -53,22 +55,20 @@ const SearchContainer = ({setSelectedBook}) => {
     }
 
     return (
-        <div>
-           <AutoComplete
-                className='autocomplete-element'
-                options={options}
-                placeholder="Book name here"
-                size='large'
-                filterOption={(inputValue, option) =>
-                    option?.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-                }
-                onSearch={handleSearch}
-                onSelect={onValueSelect}
-                allowClear
-            />
-           
-            {/* Render search results here */}
-        </div>
+        <AutoComplete
+            className='autocomplete-element'
+            options={options}
+            placeholder="Book name, Author, anything here"
+            size='large'
+            filterOption={(inputValue, option) =>
+                option?.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+            }
+            onSearch={handleSearch}
+            onSelect={onValueSelect}
+            allowClear
+            suffixIcon={<SearchOutlined />}
+            popupClassName='autocomplete-popup'
+        />
     );
 };
 

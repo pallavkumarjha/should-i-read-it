@@ -1,39 +1,50 @@
 .App {
   text-align: center;
-  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sider {
+  text-align: center;
+  line-height: 120px;
+  background-color: #F3F2EC !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.layout {
+  border-radius: 8;
+  overflow: 'hidden';
+  width: 'calc(50% - 8px)';
+  max-width: 'calc(50% - 8px)';
+  height: 100vh;
 }
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.content-style {
+  background-color: #E6E5D9;
+  padding: 40px;
+  text-align: left;
+  padding-left: 100px;
+}
+
+.book-image {
+  height: 400px;
+  position: relative;
+  left: 25%;
+  max-width: 300px;
+  max-height: 400px;
+}
+
+.image-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
-.App-link {
-  color: #61dafb;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.website-title {
+  color: #979373 !important;
+  font-family: "Goudy Bookletter 1911", serif;
+  font-size: 48px !important;
+  margin-top: 20px;
+  text-align: left;
+  padding-left: 50px;
+  margin-bottom: 80px !important;
+  cursor: pointer;
 }
