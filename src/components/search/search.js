@@ -10,7 +10,6 @@ import { debounce } from 'lodash';
 const SearchContainer = ({setSelectedBook}) => {
     const [options, setOptions] = useState([]);
     const [originalOptions, setOriginalOptions] = useState([]);
-    // const [selectedOption, setSelectedOption] = useState({});
 
     const convertSearchString = (searchString) => {
         const encodedSeachString = encodeURI(searchString);

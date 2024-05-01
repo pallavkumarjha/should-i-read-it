@@ -5,7 +5,7 @@ import SelectedBook from './components/selected-book/selected-book';
 import { Layout, Typography } from 'antd';
 import { isEmpty } from 'lodash';
 const { Title } = Typography;
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 function App() {
   const [selectedBook, setSelectedBook] = useState({});
