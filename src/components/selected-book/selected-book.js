@@ -33,7 +33,7 @@ const SelectedBook = ({ book }) => {
     }
 
     const onClickNavigate = () => {
-        window.open(book.volumeInfo.previewLink, '_blank');
+        window.open(`https://www.google.com/books/edition/_/${book.id}?hl=en`, '_blank');
     }
 
     const renderSelectedBook = () => {
